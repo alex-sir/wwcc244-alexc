@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GruntJS Demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="input-group mb-3">
+            <input type="text" id="searchText" class="form-control" placeholder="Search colors"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button id="searchBtn" class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+        </div>
+        <div id="output" class="row">
+        </div>
+        <template id="palletTemplate">
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top pallet-image">
+                    <div class="card-body">
+                        <h5 class="card-title pallet-name">Pallet Name</h5>
+                        <p class="card-text pallet-author">Pallet Author</p>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+    <!-- scripts -->
+    <script src="./vendor/jquery.js"></script>
+    <script src="./app.js"></script>
+    <script src="//localhost:35729/livereload.js"></script>
+</body>
+
+</html>
