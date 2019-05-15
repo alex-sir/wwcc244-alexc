@@ -31,7 +31,7 @@ function myTasks(grunt) {
         clean: {
             all: ["dist/*"],
             vendor: ["dist/vendor/*"],
-            main: ["dist/**/*.js", "dist/**/*.html", "dist/vendor/**/*"]
+            main: ["dist/**/*.js", "dist/**/*.html", "dist/vendor/**.*"]
         },
         watch: {
             main: {
