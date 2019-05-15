@@ -3,7 +3,7 @@ module.exports = {
     searchColors: searchColors
 };
 
-const colourLoversAPI = "http://www.colourlovers.com/api/colors";
+const colourLoversAPI = "//www.colourlovers.com/api/colors";
 
 function getColors() {
 
@@ -12,7 +12,6 @@ function getColors() {
 function searchColors(query, filters = {}) {
     let queryParams = [];
     for (let key in filters) {
-        // check syntax
         queryParams.push(`${key}=${filters[key]}`);
     }
     queryParams.push(`keywords=${query}`);
@@ -20,9 +19,8 @@ function searchColors(query, filters = {}) {
 
     let searchUrl = `${colourLoversAPI}?${queryParams.join('&')}`;
 
-    // review promises
     return new Promise((resolve, reject) => {
-        $.getJSON(searchUrl, results)
+        $.getJSON(searchUrl, resolve)
             .fail((jqxhr, textStatus, error) => {
                 reject(error);
             });
