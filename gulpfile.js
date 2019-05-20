@@ -13,14 +13,14 @@ gulp.task("copy:main", () => {
 
 gulp.task("copy:vendor", () => {
     return gulp.src("node_modules/jquery/dist/jquery.js")
-        .pipe(gulp.dest("dist/vendor/"))
+        .pipe(gulp.dest("dist/vendor/"));
 });
-
-gulp.task("copy", gulp.parallel(["copy:main", "copy:vendor"]));
 
 // clean tasks
 gulp.task("clean:all", () => {
-    return gulp.src("dist/*", {
+    // cleaning after folder is deleted gives an error
+    // use 'del' or catch the error
+    return gulp.src("dist/", {
             read: false
         })
         .pipe(clean());
@@ -34,6 +34,8 @@ gulp.task("clean:vendor", () => {
 });
 
 gulp.task("clean:main", () => {
+    // different way to do it with 'del'
+    // return del(["dist/**/*.js", "dist/**/*.html", "dist/**.*"]);
     return gulp.src(["dist/**/*.js", "dist/**/*.html", "dist/**.*"], {
             read: false
         })
@@ -43,7 +45,8 @@ gulp.task("clean:main", () => {
 // watch tasks
 gulp.task("watch", () => {
     livereload.listen();
-    gulp.watch(["client/**/*.js", "client/**/*.html"], gulp.series(["clean:main", "browserify", "copy:main", "copy:vendor"]));
+    gulp.watch(["client/**/*.js", "client/**/*.html"],
+        gulp.series(["clean:main", "browserify", "copy:main", "copy:vendor"]));
 });
 
 // browserify tasks
@@ -54,9 +57,10 @@ gulp.task("browserify", () => {
         })
         .bundle()
         .pipe(vinylSS("app.js"))
-        .pipe(gulp.dest("dist/"))
+        .pipe(gulp.dest("dist/"));
 });
 
-gulp.task("build", gulp.series(["browserify", "copy"]));
+gulp.task("copy", gulp.parallel(["copy:main", "copy:vendor"]));
+gulp.task("build", gulp.parallel(["browserify", "copy"]));
 gulp.task("default", gulp.series(["clean:all", "build"]));
 gulp.task("dev", gulp.series(["default", "watch"]));
