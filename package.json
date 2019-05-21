@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node index.js",
+    "postinstall": "npx grunt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
