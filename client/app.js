@@ -1,33 +1,35 @@
-const ColorService = require("./services/color-service");
+const ColorService = require('./services/color-service');
 
 $(document).ready(() => {
-    $("#searchBtn").on("click", () => {
-        let searchText = $("#searchText").val();
+  $('#searchBtn').on('click', () => {
+    const searchText = $('#searchText').val();
 
-        ColorService
-            .searchColors(searchText)
-            .then(results => {
-                const palletTemplate = $("#palletTemplate");
-                const palletHTML = palletTemplate.html().trim()
-                const output = $("#output");
+    ColorService
+      .searchColors(searchText)
+      .then((results) => {
+        const palletTemplate = $('#palletTemplate');
+        const palletHTML = palletTemplate.html().trim();
+        const output = $('#output');
 
-                results.forEach(pallet => {
-                    let $pallet = $(palletHTML);
+        results.forEach((pallet) => {
+          const $pallet = $(palletHTML);
 
-                    let $palletImage = $pallet.find(".pallet-image");
-                    let $palletName = $pallet.find(".pallet-name");
-                    let $palletAuthor = $pallet.find(".pallet-author");
+          const $palletImage = $pallet.find('.pallet-image');
+          const $palletName = $pallet.find('.pallet-name');
+          const $palletAuthor = $pallet.find('.pallet-author');
 
-                    $palletImage.attr("src", pallet.imageUrl);
-                    $palletName.text(pallet.title);
-                    $palletAuthor.text(pallet.userName);
+          $palletImage.attr('src', pallet.imageUrl);
+          $palletName.text(pallet.title);
+          $palletAuthor.text(pallet.userName);
 
-                    output.append($pallet);
-                });
-            })
-            .catch(err => {
-                alert('broke');
-                console.error('failed: ', err);
-            });
-    });
+          output.append($pallet);
+        });
+      })
+      .catch((err) => {
+        /* eslint-disable */
+        alert('broke');
+        console.error('failed: ', err);
+        /* eslint-enable */
+      });
+  });
 });

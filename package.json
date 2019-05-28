@@ -25,7 +25,14 @@
     "gulp-clean": "^0.4.0",
     "gulp-cli": "^2.2.0",
     "gulp-livereload": "^4.0.1",
-    "jquery": "^3.4.0",
+    "jquery": "^3.4.1",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "mocha": "^6.1.4"
   }
 }
