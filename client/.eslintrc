@@ -1,4 +1,4 @@
-// running eslint: npx eslint from root "client/**/*"
+// running eslint from root: npx eslint "client/**/*"
 {
   "env": {
     "browser": true,
