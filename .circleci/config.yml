@@ -54,7 +54,7 @@ workflows:
     - install-dependencies
     - lint:
        requires:
-       - innstall-dependencies
+       - install-dependencies
     - test:
        requires:
        - install-dependencies
